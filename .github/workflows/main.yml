@@ -27,7 +27,7 @@ jobs:
       working-directory: ./rust
       run: |
         rustc *.rs
-        ./hello  # 出力バイナリ名（rustc hello.rs → ./hello）
+        ./helloworld  # 出力バイナリ名（rustc hello.rs → ./hello）
 
     - name: Run Python
       working-directory: ./python
