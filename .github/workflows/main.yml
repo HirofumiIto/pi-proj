@@ -20,16 +20,21 @@ jobs:
     - name: Build and Run C
       working-directory: ./c
       run: |
+        echo "--- Building C ---"
         gcc *.c -o app
+        echo "--- Running C ---"
         ./app
 
     - name: Build and Run Rust
       working-directory: ./rust
       run: |
-        rustc *.rs
-        ./helloworld  # 出力バイナリ名（rustc hello.rs → ./hello）
+        echo "--- Building Rust ---"
+        rustc helloworld.rs -o hello_rust
+        echo "--- Running Rust ---"
+        ./hello_rust
 
     - name: Run Python
       working-directory: ./python
       run: |
+        echo "--- Running Python ---"
         python3 HelloWorld.py
