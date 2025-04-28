@@ -1,0 +1,35 @@
+name: CI Test
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Build Tools
+      run: |
+        sudo apt update
+        sudo apt install -y gcc python3 rustc
+
+    - name: Build and Run C
+      working-directory: ./c
+      run: |
+        gcc *.c -o app
+        ./app
+
+    - name: Build and Run Rust
+      working-directory: ./rust
+      run: |
+        rustc *.rs
+        ./hello  # 出力バイナリ名（rustc hello.rs → ./hello）
+
+    - name: Run Python
+      working-directory: ./python
+      run: |
+        python3 HelloWorld.py
