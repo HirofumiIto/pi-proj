@@ -23,7 +23,7 @@ jobs:
         echo "--- Building C ---"
         gcc *.c -o app
         echo "--- Running C ---"
-        ./app | tee /dev/tty
+        ./app
 
     - name: Build and Run Rust
       working-directory: ./rust
@@ -31,10 +31,10 @@ jobs:
         echo "--- Building Rust ---"
         rustc helloworld.rs -o hello_rust
         echo "--- Running Rust ---"
-        ./hello_rust | tee /dev/tty
+        ./hello_rust
 
     - name: Run Python
       working-directory: ./python
       run: |
         echo "--- Running Python ---"
-        python3 HelloWorld.py | tee /dev/tty
+        python3 HelloWorld.py
